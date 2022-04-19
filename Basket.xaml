@@ -1,0 +1,43 @@
+﻿<Page x:Class="ExamKanaev.Basket"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ExamKanaev"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Basket">
+    <ScrollViewer>
+        <Grid>
+            <StackPanel Orientation="Vertical">
+                <ListView Name="LVBasket" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Center"></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1" BorderBrush="Black">
+                                <Grid Width="500" Height="200">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" Source="{Binding Image}" Width="160" Height="160" Stretch="Uniform" Margin="5"></Image>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Loaded="TextBlock_Loaded" Uid="{Binding ID}"></TextBlock>
+                                        <TextBlock Text="{Binding Author, StringFormat={}Автор: {0}}"></TextBlock>
+                                        <TextBlock Text="{Binding Count, StringFormat={}Количество: {0}}"></TextBlock>
+                                        <TextBlock Text="{Binding Cost,StringFormat={}Цена: {0}}"></TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Name="Accept" Click="Accept_Click" Content="Оформить"></Button>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>
